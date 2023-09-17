@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom';
 import { auth } from '../../firebaseConections';
 import { createUserWithEmailAndPassword} from 'firebase/auth';
-
+import {toast} from 'react-toastify';
 
 export default function Register() {
 
@@ -19,7 +19,8 @@ export default function Register() {
 
             await createUserWithEmailAndPassword(auth, email, password)
                 .then(() => {
-                    alert('USUÁRIO CADASTRADO COM SUCESSO!')
+                    // alert('USUÁRIO CADASTRADO COM SUCESSO!')
+                    toast.success('USUÁRIO CADASTRADO COM SUCESSO!')
                     console.log('USUÁRIO CADASTRADO COM SUCESSO!!!!!')
                     navigate('/admin', { replace: true })
                 })

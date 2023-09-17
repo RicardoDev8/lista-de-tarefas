@@ -32,8 +32,9 @@
     border: 0;
     margin-bottom: 12px;
     height: 36px;
-    text-align: center;
+    text-align: left;
     border-radius: 4px;
+    padding: 0 10px;
 }
 
 .form button{
@@ -67,7 +68,7 @@
     color: lightgray;
     text-decoration: none;
 }
-/* Feito com uiverse para teste */
+
 
 .square {
     width: 150px;
