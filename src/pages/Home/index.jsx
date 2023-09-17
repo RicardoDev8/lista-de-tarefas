@@ -31,15 +31,12 @@ export default function Home() {
                     navigate('/admin', { replace: true })
                 })
                 .catch((error) => {
-                    // alert('EMAIL OU SENHA INVÁLIDOS')
                     toast.error("EMAIL OU SENHA INVÁLIDOS")
                     console.log('ERRO AO CRIAR CONTA ' + error)
                 })
         } else {
-            alert('preencha todos os campos!')
+            toast.warn('PREENCHA TODOS OS CAMPOS!')
         }
-
-
     }
 
 
