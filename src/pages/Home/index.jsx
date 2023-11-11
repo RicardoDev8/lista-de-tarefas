@@ -18,16 +18,11 @@ export default function Home() {
     async function handleLogin(event) {
         event.preventDefault();
 
-        if(email !== email){
-            alert('email errado')
-            return;
-        }
-
         if (email !== '' || email !== email && password !== '') {
             await signInWithEmailAndPassword(auth, email, password)
                 .then(() => {
                     toast.success('LOGIN REALIZADO COM SUCESSO!')
-                    console.log('LOGIN REALIZADO COM SUCESSO!')
+                    
                     navigate('/admin', { replace: true })
                 })
                 .catch((error) => {

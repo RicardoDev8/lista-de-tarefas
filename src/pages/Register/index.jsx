@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom';
 import { auth } from '../../firebaseConections';
-import { createUserWithEmailAndPassword} from 'firebase/auth';
+import {createUserWithEmailAndPassword} from 'firebase/auth';
 import {toast} from 'react-toastify';
 
 export default function Register() {
@@ -12,24 +12,31 @@ export default function Register() {
     const [password, setPassword] = useState('')
     const navigate = useNavigate()
 
+
     async function handleRegister(event) {
         event.preventDefault();
-
+        
         if (email !== '' && password !== '') {
 
             await createUserWithEmailAndPassword(auth, email, password)
                 .then(() => {
-                    // alert('USUÁRIO CADASTRADO COM SUCESSO!')
+                    
                     toast.success('USUÁRIO CADASTRADO COM SUCESSO!')
-                    console.log('USUÁRIO CADASTRADO COM SUCESSO!!!!!')
+                    
                     navigate('/admin', { replace: true })
                 })
                 .catch((error) => {
-                    console.log('ERRO AO CADASTRAR USUÁRIO ' + error)
+                    if(error.code === 'auth/email-already-in-use'){
+                        toast.warn('EMAIL JÁ CADASTRADO')
+                    }
+                    if(error.code === 'auth/invalid-email'){
+                        toast.error('INFORME UM EMAIL VÁLIDO')
+                    }
+                    
                 })
 
         } else {
-            alert('preencha todos os campos!')
+            toast.warn('PREENCHA TODOS OS CAMPOS!')
         }
 
 
@@ -38,11 +45,6 @@ export default function Register() {
 
     return (
         <div className="home-container" >
-
-            {/* <div className="square">
-                <div className="square_cube square_cube--color"></div>
-                <div className="square_cube square_cube--glowing"></div>
-            </div> */}
 
             <h1>Cadastre-se</h1>
             <span>Vamos criar a sua conta!</span>

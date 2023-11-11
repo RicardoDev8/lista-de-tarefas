@@ -97,7 +97,7 @@
     z-index: 1;
     filter: blur(2px);
     background: linear-gradient(135deg, #1afbf0, #da00ff);
-    animation: loadtwo 2.5s ease-in-out infinite;
+    /* animation: loadtwo 2.5s ease-in-out infinite; */
   }
   
   @keyframes loadtwo {
@@ -105,13 +105,13 @@
       transform: rotate(-80deg);
     }
   }
-
+ 
 
 
 
 
 input {
-    background-color: #383838;
+    background-color: #9c9999;
     border: 1ex solid none;
     border-top-width: 1.7em;
     margin: 0;
